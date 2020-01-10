@@ -15,16 +15,19 @@ html {
 }
 
 .content {
-  border: 4px double green;
   padding: 1rem;
   min-height: 4rem;
 }
 
 .ap-console {
+  border: 4px double green;
   background-color: black;
   color: white;
 }
 
+.input {
+  padding-left: .5rem;
+}
 .input input {
   width: 70%;
   padding-left: .5rem;
@@ -33,4 +36,7 @@ html {
 .input input:focus {
   outline: none;
 }
-
+.blue {
+  color: lightblue;
+  font-style: bold;
+}
