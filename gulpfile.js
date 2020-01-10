@@ -34,8 +34,8 @@ function buildhtml() {
 
 function buildImg() {
   return gulp.src('src/img/**')
-    .pipe(filter())
-    .pipe(imagemin(['**/*.jpg', '**/*.png', '**/*.svg']))
+    .pipe(filter(['**/*.jpg', '**/*.png', '**/*.svg']))
+    .pipe(imagemin())
     .pipe(gulp.dest('dist/img'))
 }
 

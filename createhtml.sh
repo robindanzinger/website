@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 dest='predist/'
 pre='pre.html'
 post='post.html'
