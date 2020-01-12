@@ -40,7 +40,7 @@ function init() {
   }
 
   function watchFileType(filename) {
-    return /.*\.(?:html|css)$/.test(filename)
+    return /.*\.(?:html|css|js)$/.test(filename)
   }
 
   function updateClients () {

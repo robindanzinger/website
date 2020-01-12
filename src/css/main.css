@@ -8,35 +8,80 @@
  * */
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: monospace;
+  color: oldlace;
 }
 
 html {
 }
 
 .content {
+  order: 1;
   padding: 1rem;
   min-height: 4rem;
+  width: 77%;
+  flex: 1;
+}
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+.menu {
+  order: 2;
+  width: 200px;
+  font-size: 1.4rem; 
+}
+.input {
+  order: 3;
+  width: 100%;
 }
 
 .ap-console {
   border: 4px double green;
   background-color: black;
-  color: white;
+  color: oldlace;
 }
 
 .input {
-  padding-left: .5rem;
+  padding-left: 1rem;
 }
 .input input {
   width: 70%;
   padding-left: .5rem;
   border: none;
 }
-.input input:focus {
+input:focus {
   outline: none;
 }
-.blue {
+li:hover {
+  color: green;
+}
+a {
+  color: oldlace;
+  text-decoration: none;
+}
+a:hover {
+  color: green;
+}
+.lightblue {
   color: lightblue;
-  font-style: bold;
+}
+.bold {
+  font-weight: bold;
+}
+.helpkeyword {
+  color: goldenrod;
+}
+.goldenrod {
+  color: goldenrod;
+}
+.tab {
+  padding-left: 2rem;
+}
+.font-bold {
+  font-weight: bold;
+}
+.font-big {
+  font-size: 2rem;
 }

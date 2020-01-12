@@ -6,10 +6,10 @@ inputNode.addEventListener("keyup", function(event) {
       handleEnter()
     }
 });
-
 let pwd = "~"
 
 const folders = {
+  "home.txt": "file",
   "about.txt": "file",
   "projects": {
   },
@@ -33,13 +33,16 @@ function handleEnter() {
   switch(cmd) {
     case "clear": 
       clearContent()
-      break;
+      break
     case "ls":
       showFiles()
-      break;
+      break
     case "cd":
       changeDirectory(arg)
-      break;
+      break
+    case "help":
+      showHelp()
+      break
     default: 
       appendLine("unknown command: " + cmd)
   }
@@ -58,9 +61,9 @@ function showFiles() {
   for (file in currentFolder) {
     console.log(file)
     if (currentFolder[file] === "file") {
-      appendLine(file)
+      appendStyledLine(file, "bold")
     } else {
-      appendColoredLine(file, "blue");
+      appendStyledLine(file, "lightblue bold");
     }
   }
 }
@@ -70,9 +73,13 @@ function appendLine(text) {
   contentNode.innerHTML += "<br>" + text
 }
 
-function appendColoredLine(text, color) {
-  console.log("append colored line", text)
-  contentNode.innerHTML += "<br><span class=\"" + color + "\">" + text + "</span>"
+function appendStyledLine(text, styles) {
+  console.log("append styled line", text)
+  contentNode.innerHTML += "<br><span class=\"" + styles + "\">" + text + "</span>"
+}
+
+function style(text, styleclass) {
+  return "<span class=\"" + styleclass + "\">" + text + "</span>"
 }
 
 function changeDirectory(folder = "~") {
@@ -82,8 +89,10 @@ function changeDirectory(folder = "~") {
       break;
     case ".":
       break
-    case "~": 
-      pwd = "~"
+    case "~":
+    case "": 
+    case " ":
+      changeToFolder("~")
       break;
     default: 
       if (exist(folder) && folder !== "_files") {
@@ -115,11 +124,29 @@ function getFolder(fullpath) {
 
 function changeToFolder(folder) {
   if (folder == "..") {
-    pwd = pwd.substring(0, pwd.lastIndexOf("/"))
-  } 
-  else {
+    if (pwd.lastIndexOf("/") > 0) {
+      pwd = pwd.substring(0, pwd.lastIndexOf("/"))
+    }
+  } else if (folder == "~") {
+    pwd = "~"
+  } else {
     pwd += "/" +folder
   }
   promptNode.textContent = getPrompt()
   currentFolder = getFolder(pwd)
+}
+
+function showHelp() {
+  const lines = ["Help Manual:",
+    "",
+    style("help:", "helpkeyword") + "Zeigt diese Hilfe an",
+    style("clear:", "helpkeyword") + "Löscht den Inhalt des Terminals",
+    style("cd [directory]:", "helpkeyword") + "Wechselt in das Verzeichnis f",
+    style("directory=..:", "helpkeyword tab") +  "Wechselt in das Elternverzeichnis",
+    style("directory=.:", "helpkeyword tab") + "Wechselt in das aktuelle Verzeichnis",
+    style("open [file]:", "helpkeyword") + "Öffnet die angegebene Datei",
+    style("cat [file]:", "helpkeyword") + "Zeigt den Inhalt der Datei im Terminal an",
+    style("matrix:", "helpkeyword") + "Zeigt Dir die Matrix an"
+  ]
+  lines.forEach(appendLine)
 }
