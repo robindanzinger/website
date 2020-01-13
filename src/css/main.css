@@ -9,6 +9,7 @@
 
 body {
   font-family: monospace;
+  font-size: calc(0.8rem + 0.5vw);
   color: oldlace;
 }
 
@@ -27,14 +28,11 @@ html {
   display: flex;
   flex-wrap: wrap;
 }
+
 .menu {
   order: 2;
-  width: 200px;
+  width: 250px;
   font-size: 1.4rem; 
-}
-.input {
-  order: 3;
-  width: 100%;
 }
 
 .ap-console {
@@ -44,12 +42,18 @@ html {
 }
 
 .input {
+  order: 3;
+  width: 100%;
   padding-left: 1rem;
 }
-.input input {
-  width: 70%;
+.prompt {
+  flex: 1;
   padding-left: .5rem;
   border: none;
+  font-size: calc(0.8rem + 0.5vw);
+}
+.flex {
+  display: flex
 }
 input:focus {
   outline: none;
@@ -84,4 +88,33 @@ a:hover {
 }
 .font-big {
   font-size: 2rem;
+}
+.brown {
+  color: brown;
+}
+.nowrap {
+  white-space: nowrap;
+}
+table {
+  border: 1px solid;
+}
+td {
+  vertical-align: top;
+}
+.matrix {
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media(max-width: 700px) {
+  .content {
+    order: 2;
+    width: 100%;
+  }
+  .menu {
+    order: 1;
+    width: 100%;
+  }
 }

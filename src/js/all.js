@@ -9,16 +9,21 @@ inputNode.addEventListener("keyup", function(event) {
 let pwd = "~"
 
 const folders = {
-  "home.txt": "file",
-  "about.txt": "file",
-  "projects": {
+  "index.html": "file",
+  "übermich.html": "file",
+  "projekte": {
+    "zusammenfassung.html": "file",
+    "fiducia": "file",
+    "1&1": "file"
   },
   "example": {
     "hello": "file",
     "world": "file",
     "foo": {},
     "bar": {}
-  }
+  },
+  "impressum.html": "file",
+  "datenschutz.html": "file"
 }
 let currentFolder = folders
 
@@ -43,15 +48,18 @@ function handleEnter() {
     case "help":
       showHelp()
       break
+    case "matrix":
+      matrix()
+      break
     default: 
       appendLine("unknown command: " + cmd)
   }
+  promptNode.scrollIntoView()
 }
 
 function getPrompt() {
-  return "guest@robindanzinger:" + pwd + "$ " 
+  return style("guest@robindanzinger:" + pwd + "$ ", "brown bold") 
 }
-
 
 function clearContent() {
   contentNode.innerHTML = ""
@@ -70,16 +78,29 @@ function showFiles() {
 
 function appendLine(text) {
   console.log("append line", text)
-  contentNode.innerHTML += "<br>" + text
+  contentNode.innerHTML += text + "<br>"
 }
 
 function appendStyledLine(text, styles) {
   console.log("append styled line", text)
-  contentNode.innerHTML += "<br><span class=\"" + styles + "\">" + text + "</span>"
+  contentNode.innerHTML += style(text,styles) + "<br>"
 }
 
-function style(text, styleclass) {
-  return "<span class=\"" + styleclass + "\">" + text + "</span>"
+function showTable(data, styles) {
+  let t = "<table>"
+  data.forEach(row => {
+    t += "<tr>"
+    row.forEach(cell => {
+      t += "<td>" + cell + "</td>"
+    })
+    t += "</tr>"
+  });
+  t += "</table>"
+  return t
+}
+
+function style(text, styles) {
+  return "<span class=\"" + styles + "\">" + text + "</span>"
 }
 
 function changeDirectory(folder = "~") {
@@ -132,21 +153,56 @@ function changeToFolder(folder) {
   } else {
     pwd += "/" +folder
   }
-  promptNode.textContent = getPrompt()
+  promptNode.innerHTML = getPrompt()
   currentFolder = getFolder(pwd)
 }
 
 function showHelp() {
-  const lines = ["Help Manual:",
+  const lines = ["Help",
+    "Version1.0",
     "",
-    style("help:", "helpkeyword") + "Zeigt diese Hilfe an",
-    style("clear:", "helpkeyword") + "Löscht den Inhalt des Terminals",
-    style("cd [directory]:", "helpkeyword") + "Wechselt in das Verzeichnis f",
-    style("directory=..:", "helpkeyword tab") +  "Wechselt in das Elternverzeichnis",
-    style("directory=.:", "helpkeyword tab") + "Wechselt in das aktuelle Verzeichnis",
-    style("open [file]:", "helpkeyword") + "Öffnet die angegebene Datei",
-    style("cat [file]:", "helpkeyword") + "Zeigt den Inhalt der Datei im Terminal an",
-    style("matrix:", "helpkeyword") + "Zeigt Dir die Matrix an"
   ]
   lines.forEach(appendLine)
+  appendLine(showTable([
+    [style("help:", "helpkeyword"), "Zeigt diese Hilfe an"],
+    [style("clear:", "helpkeyword"), "Löscht den Inhalt des Terminals"],
+    [style("ls:", "helpkeyword"), "Listet den Inhalt des aktuellen Verzeichnisses auf"],
+    [style("cd [directory]:", "helpkeyword"), "Wechselt in das Verzeichnis [directory]"],
+    [style("| [dir] = '..':", "nowrap helpkeyword tab"), "Wechselt in das Elternverzeichnis"],
+    [style("| [dir] = '.':", "nowrap helpkeyword tab"), "Wechselt in das aktuelle Verzeichnis"],
+    [style("open [file]:", "helpkeyword"), "Öffnet die angegebene Datei"],
+    [style("cat [file]:", "helpkeyword"), "Zeigt den Inhalt der Datei im Terminal an"],
+    [style("matrix:", "helpkeyword"), "Zeigt die Matrix an"]
+  ]))
+}
+
+function matrix() {
+  clearContent()
+  contentNode.style.height = "90vh"
+  console.log(contentNode.offsetWidth, contentNode.innerHeight, "foo")
+  contentNode.innerHTML = "<canvas id='canvas' class='matrix' width='" + contentNode.offsetWidth + "' height='" + (contentNode.offsetHeight - 20) + "'></canvas>"
+  const canvas = document.getElementById("canvas")
+
+  const context = canvas.getContext("2d")
+  context.font = "1.7rem monospace"
+  context.fillStyle = "green"
+
+  const width = canvas.width
+  const height = canvas.height
+  const fontSizeInPx = parseInt(getComputedStyle(document.documentElement).fontSize)
+  const columns = Math.round(width / fontSizeInPx)
+  const rows = Math.round(height / fontSizeInPx) + 2
+
+
+  const rowgap = 1.5
+  console.log(fontSizeInPx, "font")
+  for (let r = -1; r < rows; r++) {
+    for (let c = 0; c < columns; c++) {
+      const y = r * fontSizeInPx * rowgap 
+      const x = c * fontSizeInPx
+      context.fillText("X", x, y)
+    }
+  }
+  context.fillText("V", 144, 190)
+
 }
