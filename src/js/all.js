@@ -179,12 +179,10 @@ function showHelp() {
 function matrix() {
   clearContent()
   contentNode.style.height = "90vh"
-  console.log(contentNode.offsetWidth, contentNode.innerHeight, "foo")
   contentNode.innerHTML = "<canvas id='canvas' class='matrix' width='" + contentNode.offsetWidth + "' height='" + (contentNode.offsetHeight - 20) + "'></canvas>"
   const canvas = document.getElementById("canvas")
-
   const context = canvas.getContext("2d")
-  context.font = "1.7rem monospace"
+  context.font = "1.2rem monospace"
   context.fillStyle = "green"
 
   const width = canvas.width
@@ -196,13 +194,43 @@ function matrix() {
 
   const rowgap = 1.5
   console.log(fontSizeInPx, "font")
-  for (let r = -1; r < rows; r++) {
+  const snakes = new Array(columns)
+  for (let i = 0; i < snakes.length; i++) {
+    snakes[i] = []
+  }
+
+  function animate() {
+    context.clearRect(0, 0, width, height)
+    console.log("anim")
+    requestAnimationFrame(animate)
     for (let c = 0; c < columns; c++) {
-      const y = r * fontSizeInPx * rowgap 
-      const x = c * fontSizeInPx
-      context.fillText("X", x, y)
+      if (Math.random() > 0.99) {
+        snakes[c].push(createSnake(rows))
+      }
+      snakes[c].forEach(snake => {
+        const x = c * fontSizeInPx
+        for (let snakepart = 0; snakepart < snake.length; snakepart++) {
+          const y = (snake.position - snakepart) * fontSizeInPx * rowgap
+          context.fillStyle = snakepart == 0 ? "oldlace" : "green"
+          context.fillText(snake.elements[snakepart], x, y)
+        }
+        snake.position += 1
+        if (snake.position > rows + snake.length) {
+          snakes[c].unshift()
+        }
+      })
     }
   }
-  context.fillText("V", 144, 190)
 
+const letters = "安吧八爸百北不岛的弟地东都对多二哥个关贵国过好很会见叫姐京九李零六妈么没美妹们名明那南你您起千去认日上谁什生师十识是四她台天万王我五息系先香想小谢姓休学一亿英友月张这中字".split('');
+  function createSnake(maxrows) {
+    return {
+      "elements": letters,
+      "position": 3,
+      "length": 30
+    }
+  }
+
+  animate()
 }
+
