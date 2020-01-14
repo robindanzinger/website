@@ -224,8 +224,13 @@ function matrix() {
   for (let i = 0; i < drops.length; i++) {
     drops[i] = []
   }
-
-  function animate() {
+ 
+  let lasttime = 0
+  function animate(starttime) {
+    if (Date.now() - lasttime < 50) {
+      requestAnimationFrame(animate)
+      return
+    }
     context.clearRect(0, 0, width, height)
     if (matrixRunning) 
         requestAnimationFrame(animate)
@@ -245,7 +250,6 @@ function matrix() {
             context.fillText(field[c][r], x, y)
           }
         }
-        
         const old = Math.floor(drop.position)
         drop.position += drop.speed
         if (drop.position > rows + drop.length) {
@@ -253,6 +257,7 @@ function matrix() {
         }
       })
     }
+    lasttime = Date.now()
   }
 
   function getColor(part, length) {
@@ -266,7 +271,7 @@ function matrix() {
     return {
       "position": 0,
       "length": Math.floor(Math.random() * 1.5 * maxrows) + 5,
-      "speed": Math.floor(Math.random() * 5) / 7 + 0.3
+      "speed": Math.floor(Math.random() * 7) / 7 + 0.3
     }
   }
 
