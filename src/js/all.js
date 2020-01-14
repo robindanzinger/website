@@ -30,12 +30,17 @@ let currentFolder = folders
 function handleEnter() {
   const inputString = inputNode.value
   const inputArray = inputString.split(" ")
-  const cmd = inputArray[0]
+  const cmd = inputArray[0].trim()
   const arg = inputArray[1]
   inputNode.value = ""
 
   appendLine(getPrompt() + inputString)
+  if (matrixRunning) 
+    stopMatrix()
+  
   switch(cmd) {
+    case "":
+      break;
     case "clear": 
       clearContent()
       break
@@ -175,14 +180,15 @@ function showHelp() {
     [style("matrix:", "helpkeyword"), "Zeigt die Matrix an"]
   ]))
 }
-
+let matrixRunning = false
 function matrix() {
+  matrixRunning = true
   clearContent()
-  contentNode.style.height = "90vh"
+  contentNode.style.height = "calc(100vh - 5.6rem)"
   contentNode.innerHTML = "<canvas id='canvas' class='matrix' width='" + contentNode.offsetWidth + "' height='" + (contentNode.offsetHeight - 20) + "'></canvas>"
   const canvas = document.getElementById("canvas")
   const context = canvas.getContext("2d")
-  context.font = "1.2rem monospace"
+  context.font = "1rem monospace"
   context.fillStyle = "green"
 
   const width = canvas.width
@@ -190,47 +196,92 @@ function matrix() {
   const fontSizeInPx = parseInt(getComputedStyle(document.documentElement).fontSize)
   const columns = Math.round(width / fontSizeInPx)
   const rows = Math.round(height / fontSizeInPx) + 2
+  const rowgap = 1 
 
+  const letters = "安吧八爸百北不岛的弟地东都对多二哥个关贵国过好很会见叫姐京九李零六妈么没美妹们名明那南你您起千去认日上谁什生师十识是四她台天万王我五息系先香想小谢姓休学一亿英友月张这中字0123456789".split('');
 
-  const rowgap = 1.5
-  console.log(fontSizeInPx, "font")
-  const snakes = new Array(columns)
-  for (let i = 0; i < snakes.length; i++) {
-    snakes[i] = []
+  const field = new Array()
+  function initField() {
+    for (let i = 0; i < columns; i++) {
+      field.push([])
+      for (let j = 0; j < rows; j++) {
+        const letter = letters[Math.floor(Math.random() * letters.length)]
+        field[i].push(letter)
+      }
+    }
+  }
+
+  function changeField() {
+    for (let i = 0; i < columns; i++) {
+      field.push([])
+      for (let j = 0; j < rows; j++) {
+        if (Math.random() > 0.95) {
+          field[i][j] = letters[Math.floor(Math.random() * letters.length)]
+        }
+      }
+    }
+  }
+  initField()
+
+  const drops = new Array(columns)
+  for (let i = 0; i < drops.length; i++) {
+    drops[i] = []
   }
 
   function animate() {
     context.clearRect(0, 0, width, height)
-    console.log("anim")
-    requestAnimationFrame(animate)
+    if (matrixRunning) 
+        requestAnimationFrame(animate)
+    changeField()
     for (let c = 0; c < columns; c++) {
       if (Math.random() > 0.99) {
-        snakes[c].push(createSnake(rows))
+        drops[c].push(createDrop(rows))
       }
-      snakes[c].forEach(snake => {
-        const x = c * fontSizeInPx
-        for (let snakepart = 0; snakepart < snake.length; snakepart++) {
-          const y = (snake.position - snakepart) * fontSizeInPx * rowgap
-          context.fillStyle = snakepart == 0 ? "oldlace" : "green"
-          context.fillText(snake.elements[snakepart], x, y)
+      drops[c].forEach(drop => {
+        if (drop.length < 2) {
+          console.log(drop, "sn")
         }
-        snake.position += 1
-        if (snake.position > rows + snake.length) {
-          snakes[c].unshift()
+        const x = c * fontSizeInPx
+        for (let droppart = 0; droppart < drop.length; droppart++) {
+          const pos = Math.floor(drop.position)
+          const r = pos - droppart
+          if (r >= 0 && r < rows) {
+            context.fillStyle = getColor(droppart, drop.length)
+            const y = (pos - droppart) * fontSizeInPx * rowgap
+            context.fillText(field[c][r], x, y)
+          }
+        }
+        
+        const old = Math.floor(drop.position)
+        drop.position += drop.speed
+        if (drop.position > rows + drop.length) {
+          drops[c].unshift()
         }
       })
     }
   }
 
-const letters = "安吧八爸百北不岛的弟地东都对多二哥个关贵国过好很会见叫姐京九李零六妈么没美妹们名明那南你您起千去认日上谁什生师十识是四她台天万王我五息系先香想小谢姓休学一亿英友月张这中字".split('');
-  function createSnake(maxrows) {
+  function getColor(part, length) {
+    const maxLightness = 60
+    if (part == 0) return "oldlace"
+    const lightness = Math.floor(maxLightness - (part / length * maxLightness))
+    return "hsl(120, 100%, " + lightness + "%)"
+  } 
+
+  function createDrop(maxrows) {
     return {
-      "elements": letters,
-      "position": 3,
-      "length": 30
+      "position": 0,
+      "length": Math.floor(Math.random() * 1.5 * maxrows) + 5,
+      "speed": Math.floor(Math.random() * 5) / 7 + 0.3
     }
   }
 
   animate()
 }
 
+function stopMatrix() {
+  matrixRunning = false
+  const canvas = document.getElementById("canvas")
+  canvas.parentNode.removeChild(canvas)
+  contentNode.style.height = "auto"
+}
