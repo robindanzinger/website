@@ -72,7 +72,6 @@ function clearContent() {
 
 function showFiles() {
   for (file in currentFolder) {
-    console.log(file)
     if (currentFolder[file] === "file") {
       appendStyledLine(file, "bold")
     } else {
@@ -82,12 +81,10 @@ function showFiles() {
 }
 
 function appendLine(text) {
-  console.log("append line", text)
   contentNode.innerHTML += text + "<br>"
 }
 
 function appendStyledLine(text, styles) {
-  console.log("append styled line", text)
   contentNode.innerHTML += style(text,styles) + "<br>"
 }
 
@@ -238,9 +235,6 @@ function matrix() {
         drops[c].push(createDrop(rows))
       }
       drops[c].forEach(drop => {
-        if (drop.length < 2) {
-          console.log(drop, "sn")
-        }
         const x = c * fontSizeInPx
         for (let droppart = 0; droppart < drop.length; droppart++) {
           const pos = Math.floor(drop.position)
