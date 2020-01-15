@@ -126,6 +126,10 @@ td {
   list-style-type: none;
   max-width: calc(50% - 120px);
   flex-shrink: 1;
+  cursor: pointer;
+}
+.project:hover {
+  background-color: darkgreen;
 }
 .pr-left {
   margin-right: 50px;
@@ -133,10 +137,10 @@ td {
 .pr-right {
 }
 .project-header {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: goldenrod;
-  text-decoration: underline;
-  line-height: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 .project-time {
   font-size: 0.9rem;
