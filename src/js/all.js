@@ -10,12 +10,8 @@ let pwd = "~"
 
 const folders = {
   "index.html": "file",
+  "projects.html": "file",
   "übermich.html": "file",
-  "projekte": {
-    "zusammenfassung.html": "file",
-    "fiducia": "file",
-    "1&1": "file"
-  },
   "example": {
     "hello": "file",
     "world": "file",
@@ -53,6 +49,9 @@ function handleEnter() {
     case "help":
       showHelp()
       break
+    case "open":
+      open(arg)
+      break
     case "matrix":
       matrix()
       break
@@ -63,7 +62,7 @@ function handleEnter() {
 }
 
 function getPrompt() {
-  return style("guest@robindanzinger:" + pwd + "$ ", "brown bold") 
+  return style("guest@robindanzinger.de:" + pwd + "$ ", "brown bold") 
 }
 
 function clearContent() {
@@ -159,6 +158,14 @@ function changeToFolder(folder) {
   currentFolder = getFolder(pwd)
 }
 
+function open(file) {
+  if (currentFolder[file] !== 'file') {
+    appendLine("File not found:" + file)
+    return
+  }
+  window.location = file
+}
+
 function showHelp() {
   const lines = ["Help",
     "Version1.0",
@@ -241,12 +248,12 @@ function matrix() {
       }
       drops[c].forEach(drop => {
         const x = c * fontSizeInPx
-        for (let droppart = 0; droppart < drop.length; droppart++) {
+        for (let dropPart = 0; dropPart < drop.length; dropPart++) {
           const pos = Math.floor(drop.position)
-          const r = pos - droppart
+          const r = pos - dropPart
           if (r >= 0 && r < rows) {
-            context.fillStyle = getColor(droppart, drop.length)
-            const y = (pos - droppart) * fontSizeInPx * rowgap
+            context.fillStyle = getColor(dropPart, drop.length)
+            const y = (pos - dropPart) * fontSizeInPx * rowgap
             context.fillText(field[c][r], x, y)
           }
         }
@@ -271,7 +278,7 @@ function matrix() {
     return {
       "position": 0,
       "length": Math.floor(Math.random() * 1.5 * maxrows) + 5,
-      "speed": Math.floor(Math.random() * 7) / 7 + 0.3
+      "speed": Math.floor(Math.random() * 7) / 7 + 0.4
     }
   }
 

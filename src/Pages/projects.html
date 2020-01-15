@@ -1,0 +1,123 @@
+<div class="layout">
+  <div class="menu ap-console">
+    <ul>
+      <li><a href="index.html">Startseite</a></li>
+      <li class="selected"><a href="#" class="selected">Projekte</a></li>
+      <li><a href="#">Über mich</a></li>
+      <li><a href="#">Impressum</a></li>
+      <li><a href="#">Datenschutz</a></li>
+    </ul>
+
+  </div>
+
+  <div class="content ap-console">
+    <div class="font-big">Projekte</div><br>
+    <div class="font-bold goldenrod">Hier sehen Sie eine Auswahl der Projekte, bei denen ich mitgearbeitet habe</div><br>
+    <ul id="projects" class="projects">
+    </ul>
+  </div>
+  <div class="input ap-console flex">
+    <span id="prompt" class="brown bold">guest@robindanzinger.de:~$</span><input type="text" class="prompt ap-console">
+  </div>
+</div>
+  <script>
+    const projects = [
+      {"time": "Januar 2017",  
+        "title": "Microservice Webplattform mit SpringBoot und Vuejs",
+        "company": "EGP Gesamtbanksteuerungssysteme GmbH & Co. KG",
+        "description": "Entwicklung einer Webanwendung für Banken. Ausarbeiten eines Security-Konzeptes in einer Microservices-Umgebung. Bereitstellen zentraler Securitymethoden für die Zugriffsberechtigung. Entwicklung der Weboberfläche zur Verwaltung der Benutzer, Rollen und Rechte. Bereitstellen von Plattformkomponenten und Methoden, die dann von fachspezifischen Services verwendet werden",
+        "technologies": "MicroServices, Spring Boot, Docker, VueJs, TDD, LDAP, OpenId, OAuth".split(", ")
+      },
+
+      {"time": "Juli 2015 - Mai 2016",
+        "title": "Java-GUI-Testapplikation",
+        "company":  "Projektarbeit: ReTest",
+"description": "Entwicklung einer vollautomatischen Testsoftware",
+"technologies": "TDD, FlowDesign, Git, Mercurial, Jenkins, Maven, Java, Eclipse".split(", ")
+      },
+
+      {"time": "Juli 2013 - Juni 2015   ",
+        "title": "SEPA",
+"company":  "Projektarbeit: Serverentwicklung bei der Fiducia IT AG",
+"description":   "hier sollte mehr stehen",
+"technologies": "TDD, FlowDesign, Flowbased Programming, Java, JBF, Eclipse".split(", ")
+      },
+
+      {"time":  "April 2013 - Juli 2013   ",
+        "title": "Kunden Service Center",
+"company":  "Fiducia IT AG",
+"description":   "Weiterentwicklung eines Moduls in der von der Fiducia entwickelten Banksoftware BAP ",
+"technologies": "TDD, Java, JBF, Eclipse, RSA".split(", ")
+      },
+
+      {"time":  "Februar 2012 – August 2012",
+        "title": "Acos NMS",
+"company":  "IDS GmbH, Ettlingen",
+"description":   "Entwicklung eines Moduls (Building Measure) in Acos NMS zur Verwaltung von Baumaßnahmen im Bereich von Hausanschlüssen. Optimierung der Datenbankabfragen (Oracle)",
+"technologies": "Java, Spring, Struts, SQL, JBoss, Maven, Scrum, TDD".split(", ")
+      },
+
+      {"time":  "November 2011 – Januar 2012",
+        "title": "LISI",
+"company":  "Systec & Services GmbH, Karlsruhe",
+"description": "Entwicklung eines Dokumentenmanagementsystems",
+"technologies": "Java, GWT (Google Web Toolkit), Maven, Jenkins, Scrum, TDD".split(", ")
+      },
+
+      {"time":  "September 2009 – August 2011 ",
+        "title": "GMX.com Mailclient",
+"company":  "United Internet AG, Karlsruhe",
+"description": "Weiterentwicklung des internationalen GMX Mailclients basierend auf Qooxdoo (http://qooxdoo.org)",
+"technologies": "Javascript, Java, Spring, Maven, Jenkins, Facebook API, TDD, Scrum, Kanban".split(", ")
+      },
+
+      {"time":  "September 2008 – August 2009 Projektarbeit:" ,
+        "title": "SEPA",
+"company":"Fiducia IT AG",
+"description": "Projekt: SEPA (Single Euro Payment Area)Umsetzung des SEPA-Lastschriftverfahrens in der von der Fiducia entwickelten Banksoftware BAP.",
+"technologies": "JBF, Java, Swing, MDA".split(", ")
+      },
+
+      {"time":  "Juli 2007 – September 2007:",
+"title": "Werkstudent bei der SAP AG",
+"company": "Werkstudent bei der SAP AG",
+"description": "Werkstudent.Projekt: UX Objects Analyse und Beschreibung einer mobilen Anwendung. Erstellen eines Metamodells für die plattformübergreifende Verwendung von Datenobjekten",
+"technologies": "Java, GMF, EMF, MDA".split(", ")
+      },
+
+      {"time":  "August 2006 – Mai 2007:",
+        "title": "noch überlegen",
+"company":  "Mitarbeiter am IAF Institut für angewandte Forschung an der Hochschule Karlsruhe – Technik und Wirtschaft",
+"description": "Projekt: Modellierung und Simulation von Kristallwachstum. Automatisierte Analyse des Codes zur Erfassung von Abhängigkeiten der Eingabeparameter. Entwicklung eines Werkzeugs zur Beschreibung und Validierung von Eingabeparametern für die Simulation",
+"technologies": "Java, Eclipse Rich-Client-Platform, SWT, JFace".split(", ")
+      },
+
+      {"time":  "März 2005 – August 2005:",
+        "title": "Eclipse grafischer Editor",
+"company":  "Praktikum am FZI Forschungszentrum Informatik an der Universität Karlsruhe,",
+"description": "Entwicklung grafischer Editoren zur Modellierung von Elektrik-Elektronik-Komponenten im Fahrzeugbau.",
+"technologies": "Java, GEF, SWT, JFace, Eclipse Rich-Client-Platform".split(", ")
+      }
+    ]
+
+function createProjectListItem(project, index) {
+  const side = index % 2 === 0 ? "pr-left" : "pr-right" 
+  const technologieshtml = project.technologies.join("</li><li>")
+  return `
+    <li class="project ${side}"><div class=\"project-header\">${project.title}</div>
+    <div class="project-time\">${project.time}</div>
+    <div class="project-company\">${project.company}</div>
+    <ul class=\"ul-projects-technologies\">
+    <li>${technologieshtml}</li>
+    </ul> 
+    <div class=\"project-description\">${project.description}</div>
+    </li>
+   `
+} 
+
+const projectsNode = document.getElementById("projects")
+
+projectsNode.innerHTML = projects.map(createProjectListItem).join(" ")
+
+window.scrollTo(0,0)
+  </script>
