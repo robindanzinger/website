@@ -22,6 +22,7 @@ const folders = {
   "datenschutz.html": "file"
 }
 let currentFolder = folders
+let zoom = 0
 
 function handleEnter() {
   const inputString = inputNode.value
@@ -31,8 +32,16 @@ function handleEnter() {
   inputNode.value = ""
 
   appendLine(getPrompt() + inputString)
-  if (matrixRunning) 
+  if (matrixRunning) {
+    console.log("stopmatrix")
     stopMatrix()
+    if (cmd === "zoomout" && zoom < 2) {
+      zoom++
+      matrix()
+      return;
+    }
+  }
+  zoom = 0
   
   switch(cmd) {
     case "":
@@ -184,6 +193,7 @@ function showHelp() {
     [style("matrix:", "helpkeyword"), "Zeigt die Matrix an"]
   ]))
 }
+
 let matrixRunning = false
 function matrix() {
   matrixRunning = true
@@ -192,16 +202,25 @@ function matrix() {
   contentNode.innerHTML = "<canvas id='canvas' class='matrix' width='" + contentNode.offsetWidth + "' height='" + (contentNode.offsetHeight - 20) + "'></canvas>"
   const canvas = document.getElementById("canvas")
   const context = canvas.getContext("2d")
-  context.font = "1rem monospace"
-  context.fillStyle = "green"
 
+  let creationProbability = 0.99
+  let fontsize = 1
+  if (zoom == 1) {
+    fontsize = 0.9
+  }
+  else if (zoom == 2) {
+    fontsize = 0.5
+  }
+
+  const fontSizeInPx = parseInt(getComputedStyle(document.documentElement).fontSize)
+  const columnwidth = fontSizeInPx * fontsize 
+  const rowheight = fontSizeInPx * fontsize 
   const width = canvas.width
   const height = canvas.height
-  const fontSizeInPx = parseInt(getComputedStyle(document.documentElement).fontSize)
-  const columns = Math.round(width / fontSizeInPx)
-  const rows = Math.round(height / fontSizeInPx) + 2
-  const rowgap = 1 
+  const columns = Math.round(width / columnwidth)
+  const rows = Math.round(height / rowheight) + 2
 
+  const context2 = canvas.getContext("2d")
   const letters = "安吧八爸百北不岛的弟地东都对多二哥个关贵国过好很会见叫姐京九李零六妈么没美妹们名明那南你您起千去认日上谁什生师十识是四她台天万王我五息系先香想小谢姓休学一亿英友月张这中字0123456789".split('');
 
   const field = new Array()
@@ -233,7 +252,10 @@ function matrix() {
   }
  
   let lasttime = 0
-  function animate(starttime) {
+
+  function animate() {
+    context.globalCompositeOperation = "source-over"
+    context.font = fontsize + "rem monospace"
     if (Date.now() - lasttime < 50) {
       requestAnimationFrame(animate)
       return
@@ -243,17 +265,17 @@ function matrix() {
         requestAnimationFrame(animate)
     changeField()
     for (let c = 0; c < columns; c++) {
-      if (Math.random() > 0.99) {
+      if (Math.random() > creationProbability) {
         drops[c].push(createDrop(rows))
       }
       drops[c].forEach(drop => {
-        const x = c * fontSizeInPx
+        const x = c * columnwidth
         for (let dropPart = 0; dropPart < drop.length; dropPart++) {
           const pos = Math.floor(drop.position)
           const r = pos - dropPart
           if (r >= 0 && r < rows) {
             context.fillStyle = getColor(dropPart, drop.length)
-            const y = (pos - dropPart) * fontSizeInPx * rowgap
+            const y = (pos - dropPart) * rowheight
             context.fillText(field[c][r], x, y)
           }
         }
@@ -263,6 +285,19 @@ function matrix() {
           drops[c].unshift()
         }
       })
+    }
+    if (zoom == 1) {
+      context.globalCompositeOperation = "destination-in"
+      context.beginPath();
+      context.lineWidth = 400
+      context.moveTo(-100, height / 2  + 10);
+      context.bezierCurveTo(width / 4, height / 10, width * 3 / 4, height / 9, width + 100, height * 2);
+      context.stroke();
+    }
+    if (zoom == 2) {
+      context.globalCompositeOperation = "destination-in"
+      context.font = width * 0.7 + "px monospace"
+      context.fillText("42", width / 10, height)
     }
     lasttime = Date.now()
   }
