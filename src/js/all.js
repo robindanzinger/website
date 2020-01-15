@@ -59,7 +59,7 @@ function handleEnter() {
       showHelp()
       break
     case "open":
-      open(arg)
+      openFile(arg)
       break
     case "matrix":
       matrix()
@@ -79,7 +79,7 @@ function clearContent() {
 }
 
 function showFiles() {
-  for (file in currentFolder) {
+  for (let file in currentFolder) {
     if (currentFolder[file] === "file") {
       appendStyledLine(file, "bold")
     } else {
@@ -96,7 +96,7 @@ function appendStyledLine(text, styles) {
   contentNode.innerHTML += style(text,styles) + "<br>"
 }
 
-function showTable(data, styles) {
+function showTable(data) {
   let t = "<table>"
   data.forEach(row => {
     t += "<tr>"
@@ -141,7 +141,7 @@ function exist(folder) {
 function getFolder(fullpath) {
   const paths = fullpath.split("/")
   let selectedfolder = folders
-  for (pathpart of paths) {
+  for (let pathpart of paths) {
     if (pathpart == "~") {
       selectedfolder = folders
     } else {
@@ -167,7 +167,7 @@ function changeToFolder(folder) {
   currentFolder = getFolder(pwd)
 }
 
-function open(file) {
+function openFile(file) {
   if (currentFolder[file] !== 'file') {
     appendLine("File not found:" + file)
     return
@@ -220,7 +220,6 @@ function matrix() {
   const columns = Math.round(width / columnwidth)
   const rows = Math.round(height / rowheight) + 2
 
-  const context2 = canvas.getContext("2d")
   const letters = "安吧八爸百北不岛的弟地东都对多二哥个关贵国过好很会见叫姐京九李零六妈么没美妹们名明那南你您起千去认日上谁什生师十识是四她台天万王我五息系先香想小谢姓休学一亿英友月张这中字0123456789".split('');
 
   const field = new Array()
@@ -279,7 +278,6 @@ function matrix() {
             context.fillText(field[c][r], x, y)
           }
         }
-        const old = Math.floor(drop.position)
         drop.position += drop.speed
         if (drop.position > rows + drop.length) {
           drops[c].unshift()

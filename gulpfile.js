@@ -8,6 +8,7 @@ const uglify = require('gulp-uglify-es').default;
 const concat = require('gulp-concat');
 const filter = require('gulp-filter');
 const del = require('del');
+const eslint = require('gulp-eslint');
 
 function clean() {
   return del(['dist/**', '!dist'], {force:true});
@@ -38,6 +39,13 @@ function buildImg() {
     .pipe(imagemin())
     .pipe(gulp.dest('dist/img'))
 }
+function lint() {
+  return gulp.src(['src/js/**','!node_modules/**'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+}
 
 exports.default = series(clean, buildjs, buildcss, buildhtml, buildImg);
 exports.clean = clean;
+exports.lint = lint;
