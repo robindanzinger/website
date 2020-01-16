@@ -112,20 +112,20 @@ td {
 /* PROJEKTE */
 .projects {
   display: flex;
-  padding: 10px;
-  margin: 10px;
-  width: calc(100% - 40px);
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
 .project {
-  margin: 20px;
+  margin: 10px;
   list-style-type: none;
-  max-width: calc(50% - 120px);
   flex-shrink: 1;
   flex-grow: 1;
-  min-width: 340px;
+  max-width: calc(50% - 40px);
+  min-width: 350px;
   height: 100%;
   cursor: pointer;
   perspective: 1000px;
@@ -137,8 +137,6 @@ td {
   border: 1px solid goldenrod;
   padding: 20px;
   position: relative;
-  width: calc(100% - 40px);
-  height: calc(100% - 40px);
   transition: transform 0.6s;
   transform-style: preserve-3d;
   background-color: black;
