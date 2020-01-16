@@ -63,10 +63,10 @@
       },
 
       {"time":  "November 2011 – Januar 2012",
-        "title": "LISI",
+        "title": "Auf der grünen Wiese",
 "company":  "Systec & Services GmbH, Karlsruhe",
 "description": "LISI Entwicklung eines Dokumentenmanagementsystems",
-        "comment": "",
+        "comment": "Agil und modern sollte es sein. Und schnell Ergebnisse liefern. Ein komplett neues Team aus 5 Personen wurde aus der Erde gestampft. Keiner der Beteiligten hatte vorher für das Unternehmen gearbeite. Bis auf den Scrummaster kamen alle Teammitglieder frisch von der Hochschule oder absolvierten ihr erstes Praktikum. Hier habe ich gelernt, warum es wichtig ist, die Scrumrollen ordentlich zu definieren und wie wichtig ein guter ProductOwner ist. Auch Erfahrung ist sehr viel wert. Nach 3 Monaten war das Produkt nicht so weit wie erhofft. Die Geschäftsleitung wollte sparen, und mich traf es als externen natürlich zuerst.",
 "technologies": "Java, GWT (Google Web Toolkit), Maven, Jenkins, Scrum, TDD".split(", ")
       },
 
@@ -74,7 +74,7 @@
         "title": "E-Mail für Dich",
 "company":  "United Internet AG, Karlsruhe",
 "description": "Weiterentwicklung des internationalen GMX Mailclients basierend auf Qooxdoo (http://qooxdoo.org)",
-        "comment": "",
+        "comment": "Wer kennt den GMX-Mailer nicht (der übrigens identisch mit dem Web.de-Mailer ist)? Um zu expandieren hat man für die internationale Kundschaft einen neuen Mailclient auf Basis von qooxdoo gebaut. Dieser war mit der endlos scrollbaren Inbox ein Novum. Das ganze noch ohne Werbung, mit Facebookintegration und für die damalige Zeit mit riesigem 5 GB Speicher. Nur die deutsche Kundschaft hat diese Mailoberfläche leider nie gesehen. Neben diversen kleineren Erweiterungen und Bugfixes war ich an der Integration von Facebook maßgeblich beteiligt. So war es schließlich möglich den Newsfeed direkt im Mailer anzuzeigen. Hier habe ich die Vorteile von Scrum und Kanban kennengelernt. Das hat die Nachbarteams so angesteckt, dass innerhalb kürzester Zeit die meisten Nachbarteams sich auf den Weg in die agile Entwicklung begeben haben.",
 "technologies": "Javascript, Java, Spring, Maven, Jenkins, Facebook API, TDD, Scrum, Kanban".split(", ")
       },
 
@@ -82,7 +82,7 @@
         "title": "Money, Money, Money",
 "company":"Fiducia IT AG",
 "description": "Projekt: SEPA (Single Euro Payment Area)Umsetzung des SEPA-Lastschriftverfahrens in der von der Fiducia entwickelten Banksoftware BAP.",
-        "comment": "",
+        "comment": "Wie kommt das Geld auf mein Konto? Für die Überweisung und Lastschrift über SEPA weiß ich das nun. Und auch, wie komplex doch so etwas sein kann. Dies war mein erstes Projekt als angestellter in meinem ersten Beruf bei einem Steinbeis Transferzentrum. Und ich war auch der erste 'Steinbeiser' bei der Fiducia. Den Job habe ich wohl gut hinbekommen. Deswegen kamen nach mir viele weitere 'Steinbeiser' in die Fiducia. Und ich wurde später (dann als Freelancer) immer wieder von der Fiducia beauftragt. Das tut gut, und ich verdanke der Fiducia sehr viel meines heutigen Könnens.",
 "technologies": "JBF, Java, Swing, MDA".split(", ")
       },
 
@@ -90,13 +90,13 @@
 "title": "Arbeiten für den Europameister",
 "company": "Werkstudent bei der SAP AG",
 "description": "Werkstudent.Projekt: UX Objects Analyse und Beschreibung einer mobilen Anwendung. Erstellen eines Metamodells für die plattformübergreifende Verwendung von Datenobjekten",
-        "comment": "",
+        "comment": "SAP ist das größte europäische Softwareunternehmen. Als Vorarbeit für die anschließende Masterthesis durfte ich hier die Luft in einem Großunternehmen schnuppern. Absolut fasziniert bin ich nach wie vor wie hier mit den Mitarbeitern umgegangen wurde. Von Filterkaffee bis Latte Macchiato, diversen Tees und Softdrinks, sowie Obst, war alles umsonst. Für den kleinen Hunger konnte man sich Snacks kaufen oder eine der hervorragenden Kantinen benutzen. Arbeiten hat hier Spaß gemacht. Besprechungen wurden in einer der unzähligen Kaffeeecken abgehalten. Das fördert den Flurfunk, lockert den Alltag auf und gibt Input für kreative neue Ideen. So geht man mit seinen Mitarbeitern um. Zu diesem Zeitpunkt dachte ich noch, alle IT-Unternehmen sind so.",
 "technologies": "Java, GMF, EMF, MDA".split(", ")
       },
 
       {"time":  "August 2006 – Mai 2007:",
-        "title": "Kristalle selber züchten",
-"company":  "Mitarbeiter am IAF Institut für angewandte Forschung an der Hochschule Karlsruhe – Technik und Wirtschaft",
+       "title": "Kristalle selber züchten",
+       "company":  "Mitarbeiter am IAF Institut für angewandte Forschung an der Hochschule Karlsruhe – Technik und Wirtschaft",
 "description": "Projekt: Modellierung und Simulation von Kristallwachstum. Automatisierte Analyse des Codes zur Erfassung von Abhängigkeiten der Eingabeparameter. Entwicklung eines Werkzeugs zur Beschreibung und Validierung von Eingabeparametern für die Simulation",
         "comment": "",
 "technologies": "Java, Eclipse Rich-Client-Platform, SWT, JFace".split(", ")
@@ -116,23 +116,23 @@ function createProjectListItem(project, index) {
   const technologieshtml = project.technologies.join("</li><li>")
   return `
     <li class="project ${side}">
-      <div class="flipcard">
-        <div class="flipcard-front">
-          <div class=\"project-header\">${project.title}</div>
-          <div class="project-time\">${project.time}</div>
-          <div class="project-company\">${project.company}</div>
-          <ul class=\"ul-projects-technologies\">
-            <li>${technologieshtml}</li>
-          </ul> 
-          <div class=\"project-description\">${project.description}</div>
-        </div>
-        <div class="flipcard-back">
-          <div class=\"project-header\">${project.title}</div>
-          <div class=\"project-description\">${project.comment}</div>
-        </div>
-      </div>  
+    <div class="flipcard">
+    <div class="flipcard-front">
+    <div class=\"project-header\">${project.title}</div>
+    <div class="project-time\">${project.time}</div>
+    <div class="project-company\">${project.company}</div>
+    <ul class=\"ul-projects-technologies\">
+    <li>${technologieshtml}</li>
+    </ul> 
+    <div class=\"project-description\">${project.description}</div>
+    </div>
+    <div class="flipcard-back">
+    <div class=\"project-header\">${project.title}</div>
+    <div class=\"project-description\">${project.comment}</div>
+    </div>
+    </div>  
     </li>
-   `
+    `
 } 
 
 const projectsNode = document.getElementById("projects")
