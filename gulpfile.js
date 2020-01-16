@@ -15,7 +15,7 @@ function clean() {
 }
 
 function buildjs() {
-  return gulp.src('src/*.js')
+  return gulp.src('src/js/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'));
 }
