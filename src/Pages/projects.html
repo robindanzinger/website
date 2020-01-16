@@ -12,7 +12,7 @@
 
   <div class="content ap-console">
     <div class="font-big">Projekte</div><br>
-    <div class="font-bold goldenrod">Hier sehen Sie eine Auswahl der Projekte, bei denen ich mitgearbeitet habe</div><br>
+    <div class="font-bold">Hier sehen Sie eine Auswahl von Projekten, bei denen ich mitgearbeitet habe. Sie können auf ein Projekt klicken um mehr darüber zu erfahren.</div><br>
     <ul id="projects" class="projects">
     </ul>
   </div>
@@ -22,10 +22,11 @@
 </div>
   <script>
     const projects = [
-      {"time": "Januar 2017",  
-        "title": "Das Eldorado für Programmierer",
+      {"time": "Januar 2017 - Juni 2019",  
+        "title": "Das Eldorado für Wissbegierige",
         "company": "EGP Gesamtbanksteuerungssysteme GmbH & Co. KG",
         "description": "Entwicklung einer Webanwendung für Banken. Ausarbeiten eines Security-Konzeptes in einer Microservices-Umgebung. Bereitstellen zentraler Securitymethoden für die Zugriffsberechtigung. Entwicklung der Weboberfläche zur Verwaltung der Benutzer, Rollen und Rechte. Bereitstellen von Plattformkomponenten und Methoden, die dann von fachspezifischen Services verwendet werden",
+        "comment": "In diesem Projekt habe ich die bisher größte Vielfalt an modernen Programmiermethoden, Tools und Sprachen gehabt. Sämtliche in den letzten Jahren gehypte Themen kamen hier zur Anwendung und mit den meisten Themen konnte ich mich auch intensiver auseinandersetzen. Wie klappt eine Microservice-Architektur mit Spring Boot und einem modernen Frontend wie Vuejs? Das ganze in einem über 100-Personen-Projekt. Dank Docker, ausgereifter Testinfrastruktur mit Selenium und Junit-Tests, sowie intelligenter CI/CD-Pipelines klappte vieles gut. Aber manchmal fehlte dann doch die Erfahrung im Team und wir haben dann z.B. statt auf EventSourcing auf klassische Datenbankstrukturen gesetzt.",
         "technologies": "MicroServices, Spring Boot, Docker, VueJs, TDD, LDAP, OpenId, OAuth".split(", ")
       },
 
@@ -33,13 +34,15 @@
         "title": "Kann das nicht ein Roboter machen?",
         "company":  "Projektarbeit: ReTest",
 "description": "Entwicklung einer vollautomatischen Testsoftware",
+        "comment": "Überall hört man von KI. Hier bei Retest redet man nicht nur davon, sondern setzt die neuesten Kenntnisse der KI-Forschung in die Praxis um. Die KI klickt sich selbständig durch die UI und lernt dabei die Anwendung kennen. Das neu erworbene Wissen wird dann verwendet um Regressionsfehler zu entdecken. Der menschliche Tester kann sich so auf die schwierigen Fälle konzentrieren. Die einfache monotone Arbeit erledigt zukünftig der Roboter. Ich bin sehr stolz darauf, dass ich ich den Start dieses Startups begleiten und die erste Version des grafischen Record-and-Replay-Testwerkzeugs mitgestalten durfte.",
 "technologies": "TDD, FlowDesign, Git, Mercurial, Jenkins, Maven, Java, Eclipse".split(", ")
       },
 
       {"time": "Juli 2013 - Juni 2015   ",
-        "title": "Alles fließt.",
+        "title": "Alles fließt",
 "company":  "Projektarbeit: Serverentwicklung bei der Fiducia IT AG",
 "description":   "hier sollte mehr stehen",
+        "comment": "Was macht man, wenn der Code unwartbar und unverständlich geworden ist? Richtig. Man refaktoriert. Doch wie kann Code verständlicher werden? Ralf Westphal hat Flow Design erfunden und so überzeugend in seinem Blog beschrieben, dass wir das Vorgehen umgesetzt haben. Das Konzept hat mich überzeugt: Aufteilung des Codes in Flows und funktionale Einheiten. Ich habe dazu auch einen Vortrag bei den XP-Days gehalten. Und überhaupt, so einen schönen flüssigen Code habe ich seitdem nicht mehr gesehen.",
 "technologies": "TDD, FlowDesign, Flowbased Programming, Java, JBF, Eclipse".split(", ")
       },
 
@@ -47,13 +50,15 @@
         "title": "Der Kunde ist König",
 "company":  "Fiducia IT AG",
 "description":   "Weiterentwicklung eines Moduls in der von der Fiducia entwickelten Banksoftware BAP ",
+        "comment": "Wenn ich den Leuten erzähle, dass ich im Team KSC gearbeitet habe, sehe ich vor allem bei Karlsruher Fußballfans ein Leuchten in den Augen. Das erlischt dann leider meist nach der Erklärung, dass es sich um die Software für das KundenServiceCenter der Volksbanken handelt. Das Projekt hatte eine Vorreiterrolle für die Einführung von Scrum im gesamten Unternehmen. Vorteilhaft dafür war meine Erfahrung mit Scrum und Kanban bei der 1und1. Außerdem konnte ich meine Erfahrung zu testgetriebener Entwicklung (TDD) im Team erfolgreich einbringen. Dass der Aufenthalt nur so kurz war, lag daran, dass im Projekt SEPA Not am Mann war. Und weil man mich noch von früher kannte, wurde ich gebeten, zu meinem alten Team zu wechseln.",
 "technologies": "TDD, Java, JBF, Eclipse, RSA".split(", ")
       },
 
       {"time":  "Februar 2012 – August 2012",
-        "title": "ERP mal ganz anders",
+        "title": "Unter Strom",
 "company":  "IDS GmbH, Ettlingen",
 "description":   "Entwicklung eines Moduls (Building Measure) in Acos NMS zur Verwaltung von Baumaßnahmen im Bereich von Hausanschlüssen. Optimierung der Datenbankabfragen (Oracle)",
+        "comment": "Eine hochkonfigurierbare Software zur Steuerung von Energieunternehmen, das hat die IDS erschaffen. Also quasi ein SAP für Stromfirmen. Aber wie baut man eine Standardsoftware, die sich an jede Besonderheit eines Unternehmens anpasst? Hier wurde eine interessanter Lösungsansatz gefunden. Metatabellen beschreiben die Unternehmensstruktur. Das hat nicht nur Vorteile. Seitenlange PL-SQL-Skripts habe ich debuggt und gefixt, um effizient aus der DB die richtigen Daten wieder herauszulesen. Auf der anderen Seite konnte die Software tatsächlich leicht erweitert werden. In einem 3-köpfigen Scrumteam haben wir ein neues Modul zur Verwaltung von Baumaßnahmen im Bereich von Hausanschlüssen erstellt.",
 "technologies": "Java, Spring, Struts, SQL, JBoss, Maven, Scrum, TDD".split(", ")
       },
 
@@ -61,6 +66,7 @@
         "title": "LISI",
 "company":  "Systec & Services GmbH, Karlsruhe",
 "description": "LISI Entwicklung eines Dokumentenmanagementsystems",
+        "comment": "",
 "technologies": "Java, GWT (Google Web Toolkit), Maven, Jenkins, Scrum, TDD".split(", ")
       },
 
@@ -68,20 +74,23 @@
         "title": "E-Mail für Dich",
 "company":  "United Internet AG, Karlsruhe",
 "description": "Weiterentwicklung des internationalen GMX Mailclients basierend auf Qooxdoo (http://qooxdoo.org)",
+        "comment": "",
 "technologies": "Javascript, Java, Spring, Maven, Jenkins, Facebook API, TDD, Scrum, Kanban".split(", ")
       },
 
       {"time":  "September 2008 – August 2009 Projektarbeit:" ,
-        "title": "Money, money, money",
+        "title": "Money, Money, Money",
 "company":"Fiducia IT AG",
 "description": "Projekt: SEPA (Single Euro Payment Area)Umsetzung des SEPA-Lastschriftverfahrens in der von der Fiducia entwickelten Banksoftware BAP.",
+        "comment": "",
 "technologies": "JBF, Java, Swing, MDA".split(", ")
       },
 
       {"time":  "Juli 2007 – September 2007:",
-"title": "Arbeiten beim Europameister",
+"title": "Arbeiten für den Europameister",
 "company": "Werkstudent bei der SAP AG",
 "description": "Werkstudent.Projekt: UX Objects Analyse und Beschreibung einer mobilen Anwendung. Erstellen eines Metamodells für die plattformübergreifende Verwendung von Datenobjekten",
+        "comment": "",
 "technologies": "Java, GMF, EMF, MDA".split(", ")
       },
 
@@ -89,13 +98,15 @@
         "title": "Kristalle selber züchten",
 "company":  "Mitarbeiter am IAF Institut für angewandte Forschung an der Hochschule Karlsruhe – Technik und Wirtschaft",
 "description": "Projekt: Modellierung und Simulation von Kristallwachstum. Automatisierte Analyse des Codes zur Erfassung von Abhängigkeiten der Eingabeparameter. Entwicklung eines Werkzeugs zur Beschreibung und Validierung von Eingabeparametern für die Simulation",
+        "comment": "",
 "technologies": "Java, Eclipse Rich-Client-Platform, SWT, JFace".split(", ")
       },
 
       {"time":  "März 2005 – August 2005:",
-        "title": "Ins kalte Wasser geworfen",
+        "title": "Der Wurf ins kalte Wasser",
 "company":  "Praktikum am FZI Forschungszentrum Informatik an der Universität Karlsruhe,",
 "description": "Entwicklung grafischer Editoren zur Modellierung von Elektrik-Elektronik-Komponenten im Fahrzeugbau.",
+        "comment": "",
 "technologies": "Java, GEF, SWT, JFace, Eclipse Rich-Client-Platform".split(", ")
       }
     ]
@@ -104,13 +115,22 @@ function createProjectListItem(project, index) {
   const side = index % 2 === 0 ? "pr-left" : "pr-right" 
   const technologieshtml = project.technologies.join("</li><li>")
   return `
-    <li class="project ${side}"><div class=\"project-header\">${project.title}</div>
-    <div class="project-time\">${project.time}</div>
-    <div class="project-company\">${project.company}</div>
-    <ul class=\"ul-projects-technologies\">
-    <li>${technologieshtml}</li>
-    </ul> 
-    <div class=\"project-description\">${project.description}</div>
+    <li class="project ${side}">
+      <div class="flipcard">
+        <div class="flipcard-front">
+          <div class=\"project-header\">${project.title}</div>
+          <div class="project-time\">${project.time}</div>
+          <div class="project-company\">${project.company}</div>
+          <ul class=\"ul-projects-technologies\">
+            <li>${technologieshtml}</li>
+          </ul> 
+          <div class=\"project-description\">${project.description}</div>
+        </div>
+        <div class="flipcard-back">
+          <div class=\"project-header\">${project.title}</div>
+          <div class=\"project-description\">${project.comment}</div>
+        </div>
+      </div>  
     </li>
    `
 } 
