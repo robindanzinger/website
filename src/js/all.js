@@ -2,7 +2,7 @@ const contentNode = document.getElementsByClassName("content")[0]
 const inputNode = document.getElementsByTagName("input")[0];
 const promptNode = document.getElementById("prompt");
 inputNode.addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || event.key === "Go") {
       handleEnter()
     }
 });
