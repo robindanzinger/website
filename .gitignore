@@ -1,5 +1,7 @@
 /Bildervorlage
 /node_modules
+/predist
 *.swp
 /dist
 /.vim
+deploy.sh
