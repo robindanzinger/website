@@ -129,6 +129,7 @@ td {
   height: 100%;
   cursor: pointer;
   perspective: 1000px;
+  background-color: transparent;
 }
 .flipcard {
   display: grid;
@@ -141,7 +142,7 @@ td {
   transform-style: preserve-3d;
   background-color: black;
 }
-.flipcard:hover {
+.project:hover .flipcard{
   transform: rotateY(180deg);
 }
 .flipcard-front, .flipcard-back {
