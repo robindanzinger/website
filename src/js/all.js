@@ -11,7 +11,7 @@ let pwd = "~"
 const folders = {
   "index.html": "file",
   "projects.html": "file",
-  "übermich.html": "file",
+  "about.html": "file",
   "example": {
     "hello": "file",
     "world": "file",
