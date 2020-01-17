@@ -22,12 +22,6 @@ body {
 .default-font-color {
   color: oldlace;
 }
-.foo{
-  margin-bottom: 4px;
-}
-.bar {
-  margin-bottom: 2rem;
-}
 html {
 }
 
@@ -228,7 +222,13 @@ td {
   margin: 0 20px 20px 0px;
   width: 300px;
 }
-
+/* INDEX */
+.header {
+  margin-bottom: 4px;
+}
+.subheader {
+  margin-bottom: 2rem;
+}
 @media(max-width: 700px) {
   .content {
     order: 2;
