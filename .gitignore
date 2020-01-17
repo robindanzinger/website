@@ -1,6 +1,7 @@
 /Bildervorlage
 /node_modules
 /predist
+/tmp
 *.swp
 /dist
 /.vim
