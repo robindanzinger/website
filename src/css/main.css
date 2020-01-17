@@ -13,9 +13,34 @@ body {
   color: oldlace;
 }
 
+.pr-color {
+  color: green;
+}
+.sc-color {
+  color: goldenrod;
+}
+.default-font-color {
+  color: oldlace;
+}
+.foo{
+  margin-bottom: 4px;
+}
+.bar {
+  margin-bottom: 2rem;
+}
 html {
 }
 
+h1 {
+  color: goldenrod;
+  font-size: 2rem;
+  margin-top: 0px;
+}
+h2 {
+  color: goldenrod;
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+}
 .content {
   order: 1;
   padding: 1rem;
@@ -74,6 +99,9 @@ a:hover {
 .bold {
   font-weight: bold;
 }
+.font-small {
+  font-size: 0.7rem;
+}
 .helpkeyword {
   color: goldenrod;
 }
@@ -86,17 +114,17 @@ a:hover {
 .font-bold {
   font-weight: bold;
 }
-.font-big {
-  font-size: 2rem;
-}
 .brown {
   color: brown;
 }
 .nowrap {
   white-space: nowrap;
 }
-table {
-  border: 1px solid;
+.table {
+  border: 1px solid ;
+}
+.gap {
+  padding: 10px;
 }
 td {
   vertical-align: top;
@@ -192,6 +220,13 @@ td {
 .project-description {
   clear: left;
   font-size: 0.9rem;
+}
+
+/* ABOUT */
+.float-right {
+  float: left;
+  margin: 0 20px 20px 0px;
+  width: 300px;
 }
 
 @media(max-width: 700px) {
