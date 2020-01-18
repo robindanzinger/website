@@ -192,11 +192,12 @@ td {
 .project-company {
   line-height: 2rem;
 }
-.project-technologies {
-  color: white;
-  font-style: italic;
+.project-size {
+  font-size: 0.9rem;
+  line-height: 2rem;
 }
 .ul-projects-technologies {
+  margin-top: 2rem;
   list-style-type: none;
   font-style: italic;
   font-size: 0.9rem;
