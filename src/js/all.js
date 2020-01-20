@@ -97,7 +97,7 @@ function appendStyledLine(text, styles) {
 }
 
 function showTable(data) {
-  let t = "<table class='table'>"
+  let t = "<table class='simpleborder'>"
   data.forEach(row => {
     t += "<tr>"
     row.forEach(cell => {

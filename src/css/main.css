@@ -11,6 +11,7 @@ body {
   font-family: monospace;
   font-size: calc(0.8rem + 0.5vw);
   color: oldlace;
+  background-color: oldlace;
 }
 
 .pr-color {
@@ -22,6 +23,7 @@ body {
 .default-font-color {
   color: oldlace;
 }
+
 html {
 }
 
@@ -38,7 +40,7 @@ h2 {
 .content {
   order: 1;
   padding: 1rem;
-  min-height: 4rem;
+  min-height: calc(100vh - 5.5rem); 
   width: 77%;
   flex: 1;
 }
@@ -115,7 +117,7 @@ a:hover {
 .nowrap {
   white-space: nowrap;
 }
-.table {
+.simpleborder {
   border: 1px solid ;
 }
 .gap {
@@ -209,10 +211,10 @@ td {
   display: block;
 }
 .ul-projects-technologies li::after {
-  content: ", "
+  content: ",\00A0";
 }
 .ul-projects-technologies li:last-child::after {
-  content: ""
+  content: "";
 }
 .project-description {
   clear: left;
@@ -220,10 +222,21 @@ td {
 }
 
 /* ABOUT */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.flex-column {
+  margin-left: 10px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
 .img {
-  float: left;
-  margin: 0 20px 20px 0px;
-  width: 300px;
+  width: 150px;
+  height: 150px;
   border: 5px solid goldenrod;
 }
 
@@ -233,6 +246,9 @@ td {
   margin-bottom: 40px;
 }
 .header {
+  font-style: italic;
+  font-weight: bold;
+  color: goldenrod;
   margin-bottom: 4px;
 }
 .subheader {
@@ -242,7 +258,10 @@ td {
   float: right;
   border: 5px solid goldenrod;
   margin: 0 20px 0 20px;
-  height: 300px;
+  height: 80px;
+}
+.img-welcome {
+  width: 100%;
 }
 
 @media(max-width: 700px) {
