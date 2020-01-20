@@ -23,7 +23,12 @@ body {
 .default-font-color {
   color: oldlace;
 }
-
+.desktop {
+  display: block;
+}
+.mobile {
+  display: none;
+}
 html {
 }
 
@@ -69,8 +74,10 @@ h2 {
   padding-left: 1rem;
 }
 .prompt {
+  padding-left: 0.5rem;
   flex: 1;
-  padding-left: .5rem;
+  width: 100px;
+  min-width: 20px;
   border: none;
   font-size: calc(0.8rem + 0.5vw);
 }
@@ -256,5 +263,11 @@ td {
   .menu {
     order: 1;
     width: 100%;
+  }
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
   }
 }
