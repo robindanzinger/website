@@ -182,15 +182,15 @@ function showHelp() {
   ]
   lines.forEach(appendLine)
   appendLine(showTable([
-    [style("help:", "helpkeyword"), "Zeigt diese Hilfe an"],
-    [style("clear:", "helpkeyword"), "Löscht den Inhalt des Terminals"],
-    [style("ls:", "helpkeyword"), "Listet den Inhalt des aktuellen Verzeichnisses auf"],
-    [style("cd [directory]:", "helpkeyword"), "Wechselt in das Verzeichnis [directory]"],
-    [style("| [dir] = '..':", "nowrap helpkeyword tab"), "Wechselt in das Elternverzeichnis"],
-    [style("| [dir] = '.':", "nowrap helpkeyword tab"), "Wechselt in das aktuelle Verzeichnis"],
-    [style("open [file]:", "helpkeyword"), "Öffnet die angegebene Datei"],
-    [style("cat [file]:", "helpkeyword"), "Zeigt den Inhalt der Datei im Terminal an"],
-    [style("matrix:", "helpkeyword"), "Zeigt die Matrix an"]
+    [style("help:", "primary-color"), "Zeigt diese Hilfe an"],
+    [style("clear:", "primary-color"), "Löscht den Inhalt des Terminals"],
+    [style("ls:", "primary-color"), "Listet den Inhalt des aktuellen Verzeichnisses auf"],
+    [style("cd [directory]:", "primary-color"), "Wechselt in das Verzeichnis [directory]"],
+    [style("| [dir] = '..':", "nowrap primary-color tab"), "Wechselt in das Elternverzeichnis"],
+    [style("| [dir] = '.':", "nowrap primary-color tab"), "Wechselt in das aktuelle Verzeichnis"],
+    [style("open [file]:", "primary-color"), "Öffnet die angegebene Datei"],
+    [style("cat [file]:", "primary-color"), "Zeigt den Inhalt der Datei im Terminal an"],
+    [style("matrix:", "primary-color"), "Zeigt die Matrix an"]
   ]))
 }
 
