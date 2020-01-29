@@ -12,6 +12,7 @@ body {
   font-size: calc(0.8rem + 0.5vw);
   color: oldlace;
   background-color: oldlace;
+  margin: 8px;
 }
 
 .primary-color {
@@ -45,7 +46,7 @@ h2 {
 .content {
   order: 1;
   padding: 1rem;
-  min-height: calc(100vh - 5.5rem); 
+  min-height: calc(100vh - 5.2rem - 0.5vw);
   width: 77%;
   flex: 1;
 }
@@ -243,7 +244,7 @@ td {
 /* INDEX */
 .introtext {
   min-height: 300px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .header {
   font-style: italic;
