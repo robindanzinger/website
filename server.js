@@ -12,7 +12,7 @@ app.get("/page/", function (req, res) {
   res.send(renderPage(html))
 })
 app.get("/page/:filename", function (req, res) {
-  const file = req.params.filename 
+  const file = req.params.filename.indexOf(".html") > 0 ? req.params.filename : req.params.filename + ".html" 
   const html = fs.readFileSync(`./src/Pages/${file}`, 'utf-8')
   res.send(renderPage(html))
 })
