@@ -180,6 +180,9 @@ td {
   flex-shrink: 0;
   backface-visibility: hidden;
 }
+.flipcard-front {
+  transform: rotateY(0deg);
+}
 .flipcard-back {
   transform: rotateY(180deg);
 }
