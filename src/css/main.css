@@ -173,6 +173,7 @@ td {
   transform: rotateY(180deg);
 }
 .flipcard-front, .flipcard-back {
+  background-color: black;
   grid-row: 1;
   grid-column: 1;
   position: relative;
