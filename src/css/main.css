@@ -10,8 +10,8 @@
 body {
   font-family: monospace;
   font-size: calc(0.8rem + 0.5vw);
-  color: oldlace;
-  background-color: oldlace;
+  color: cornsilk;
+  background-color: cornsilk;
   margin: 8px;
 }
 
@@ -22,7 +22,7 @@ body {
   color: green;
 }
 .default-font-color {
-  color: oldlace;
+  color: cornsilk;
 }
 .desktop {
   display: block;
@@ -66,7 +66,7 @@ h2 {
 .ap-console {
   border: 4px double green;
   background-color: black;
-  color: oldlace;
+  color: cornsilk;
 }
 
 .input {
@@ -92,7 +92,7 @@ input:focus {
   color: #FFBF00; 
 }
 a {
-  color: oldlace;
+  color: cornsilk;
   text-decoration: none;
 }
 a:hover {
