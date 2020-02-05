@@ -167,7 +167,6 @@ td {
   position: relative;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  background-color: black;
 }
 .project:hover .flipcard{
   transform: rotateY(180deg);
