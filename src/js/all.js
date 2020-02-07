@@ -6,20 +6,18 @@ inputNode.addEventListener("keyup", function(event) {
       handleEnter()
     }
 });
+
 let pwd = "~"
 
 const folders = {
   "index.html": "file",
   "projects.html": "file",
   "about.html": "file",
-  "example": {
-    "hello": "file",
-    "world": "file",
-    "foo": {},
-    "bar": {}
-  },
   "impressum.html": "file",
-  "datenschutz.html": "file"
+  "datenschutz.html": "file",
+  "Blog": {
+    "intro.html": "file"
+  }
 }
 let currentFolder = folders
 let zoom = 0
@@ -33,7 +31,6 @@ function handleEnter() {
 
   appendLine(getPrompt() + inputString)
   if (matrixRunning) {
-    console.log("stopmatrix")
     stopMatrix()
     if (cmd === "zoomout" && zoom < 2) {
       zoom++
@@ -172,7 +169,7 @@ function openFile(file) {
     appendLine("File not found:" + file)
     return
   }
-  window.location = file
+  window.location = pwd.substring(2) + "/" + file
 }
 
 function showHelp() {
@@ -323,4 +320,8 @@ function stopMatrix() {
   const canvas = document.getElementById("canvas")
   canvas.parentNode.removeChild(canvas)
   contentNode.style.height = "auto"
+}
+
+if (typeof preselectedFolder !== 'undefined') {
+  changeToFolder(preselectedFolder)
 }

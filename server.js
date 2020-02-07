@@ -11,11 +11,18 @@ app.get("/page/", function (req, res) {
   const html = fs.readFileSync(`./src/Pages/index.html`, 'utf-8')
   res.send(renderPage(html))
 })
+app.get("/page/:subfolder/:filename", function (req, res) {
+  const file = req.params.filename.indexOf(".html") > 0 ? req.params.filename : req.params.filename + ".html" 
+  const folder = req.params.subfolder
+  const html = fs.readFileSync(`./src/Pages/${folder}/${file}`, 'utf-8')
+  res.send(renderPage(html))
+})
 app.get("/page/:filename", function (req, res) {
   const file = req.params.filename.indexOf(".html") > 0 ? req.params.filename : req.params.filename + ".html" 
   const html = fs.readFileSync(`./src/Pages/${file}`, 'utf-8')
   res.send(renderPage(html))
 })
+
 function renderPage(html) {
   const prehtml = fs.readFileSync(`./pre.html`, 'utf-8')
   const posthtml = fs.readFileSync(`./post.html`, 'utf-8')
