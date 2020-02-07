@@ -33,6 +33,11 @@ function buildhtml() {
     .pipe(gulp.dest('dist'));
 }
 
+function buildhtml2() {
+  return gulp.src('predist/Blog/*.html')
+    .pipe(htmlmin())
+    .pipe(gulp.dest('dist/Blog'));
+}
 function buildImg() {
   return gulp.src('src/img/**')
     .pipe(filter(['**/*.jpg', '**/*.png', '**/*.svg']))
@@ -46,6 +51,6 @@ function lint() {
     .pipe(eslint.failAfterError());
 }
 
-exports.default = series(clean, buildjs, buildcss, buildhtml, buildImg);
+exports.default = series(clean, buildjs, buildcss, buildhtml, buildhtml2, buildImg);
 exports.clean = clean;
 exports.lint = lint;
