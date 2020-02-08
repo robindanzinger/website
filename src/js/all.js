@@ -186,7 +186,6 @@ function showHelp() {
     [style("| [dir] = '..':", "nowrap primary-color tab"), "Wechselt in das Elternverzeichnis"],
     [style("| [dir] = '.':", "nowrap primary-color tab"), "Wechselt in das aktuelle Verzeichnis"],
     [style("open [file]:", "primary-color"), "Öffnet die angegebene Datei"],
-    [style("cat [file]:", "primary-color"), "Zeigt den Inhalt der Datei im Terminal an"],
     [style("matrix:", "primary-color"), "Zeigt die Matrix an"]
   ]))
 }
