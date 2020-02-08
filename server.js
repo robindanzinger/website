@@ -5,7 +5,7 @@ const port = 3000
 const fs = require('fs')
 
 app.use(express.static('src'))
-app.use(express.static('dist'))
+app.use(express.static('dist', {extensions:['html']}))
 
 app.get("/page/", function (req, res) {
   const html = fs.readFileSync(`./src/Pages/index.html`, 'utf-8')
