@@ -2,25 +2,12 @@
 dest='predist/'
 pre='pre.html'
 post='post.html'
-for page in src/Pages/* 
-do 
-  if [ -f $page ]
-  then
-    filename=$dest${page##*/}
-    cat $pre > $filename
-    cat $page >> $filename
-    cat $post >> $filename
-  fi
-done
-mkdir -p predist/Blog
-dest='predist/Blog/'
-for page in src/Pages/Blog/* 
-do 
-  if [ -f $page ]
-  then
-    filename=$dest${page##*/}
-    cat $pre > $filename
-    cat $page >> $filename
-    cat $post >> $filename
-  fi
+for page in $(find ./src/Pages/ -type f -print)
+do
+  filename=$dest${page#./src/Pages/}
+  folder=${filename%/*}
+  mkdir -p $folder
+  cat $pre > $filename
+  cat $page >> $filename
+  cat $post >> $filename
 done
