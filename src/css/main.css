@@ -168,7 +168,7 @@ td {
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
-.project:hover .flipcard{
+.project:hover .flipcard, .project:focus .flipcard {
   transform: rotateY(180deg);
 }
 .flipcard-front, .flipcard-back {
