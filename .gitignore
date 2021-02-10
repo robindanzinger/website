@@ -3,6 +3,7 @@
 /predist
 /tmp
 *.swp
+.vimsession
 /dist
 /.vim
 deploy.sh
