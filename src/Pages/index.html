@@ -12,6 +12,20 @@
       <li><a href="./impressum">Impressum</a></li>
       <li><a href="./datenschutz">Datenschutz</a></li>
     </ul>
+
+    <ul>
+      <li>
+    <input type="range" min="5" max="100" value="50" oninput="changeContrast(this.value)" class="range">
+      </li><li>
+    <input type="range" min="5" max="100" value="50" oninput="changeBrightness(this.value)" class="range">
+      </li><li>
+    <input type="range" min="5" max="100" value="50" oninput="changeSaturation(this.value)" class="range">
+      </li>
+      <li>
+        <button onclick="toggleTheme()">L</button>
+      </li>
+    </ul>
+
   </div>
 
   <div class="content ap-console">

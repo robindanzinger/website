@@ -1,11 +1,70 @@
 const contentNode = document.getElementsByClassName("content")[0]
 const inputNode = document.getElementsByTagName("input")[0];
 const promptNode = document.getElementById("prompt");
+
+const rootNode = document.querySelector(':root');
 inputNode.addEventListener("keyup", function(event) {
     if (event.key === "Enter" || event.key === "Go") {
       handleEnter()
     }
 });
+
+let theme = 'dark'
+function toggleTheme() {
+  theme = theme == 'dark' ? 'light' : 'dark'
+  changeTheme()
+}
+
+function changeTheme() {
+  if (theme == 'light') {
+    rootNode.style.setProperty('--primary-color', 'steelblue');
+    rootNode.style.setProperty('--secondary-color', 'green');
+    rootNode.style.setProperty('--primary-font-color', 'black');
+    rootNode.style.setProperty('--secondary-font-color', 'brown');
+    rootNode.style.setProperty('--content-bg-color', 'ghostwhite');
+    rootNode.style.setProperty('--body-bg-color', 'darkgray');
+  } else {
+    rootNode.style.setProperty('--primary-color', '#FFBF00');
+    rootNode.style.setProperty('--secondary-color', 'green');
+    rootNode.style.setProperty('--primary-font-color', 'cornsilk');
+    rootNode.style.setProperty('--secondary-font-color', 'brown');
+    rootNode.style.setProperty('--content-bg-color', 'black');
+    rootNode.style.setProperty('--body-bg-color', 'cornsilk');
+  }
+}
+
+let contrast = 1
+let brightness = 1
+let saturation = 1
+
+function changeContrast(value) {
+  contrast = normalize(value)
+  updateMonitor()
+}
+
+function changeBrightness(value) {
+  brightness = normalize(value)
+  updateMonitor()
+}
+
+function changeSaturation(value) {
+  saturation = normalize(value)
+  updateMonitor()
+}
+
+function normalize(value) {
+  if (value <= 50) {
+    return value / 50 
+  } else if (value < 70){
+    return 1 + (value - 50) / 20 
+  } else {
+    return 2 + (value - 70) * 2 / 3
+  }
+}
+
+function updateMonitor() {
+  document.body.style.filter = `brightness(${brightness}) contrast(${contrast}) saturate(${saturation})`
+}
 
 let pwd = "~"
 
