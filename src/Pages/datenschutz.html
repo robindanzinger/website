@@ -12,6 +12,19 @@
       <li><a href="./impressum">Impressum</a></li>
       <li class="selected"><a href="./datenschutz" class="selected">Datenschutz</a></li>
     </ul>
+    <ul class="monitorsettings">
+      <li>
+    <input type="range" min="5" max="100" value="50" oninput="changeContrast(this.value)" class="range">
+      </li><li>
+    <input type="range" min="5" max="100" value="50" oninput="changeBrightness(this.value)" class="range">
+      </li><li>
+    <input type="range" min="5" max="100" value="50" oninput="changeSaturation(this.value)" class="range">
+      </li>
+    </ul>
+    <div class="modesettings">
+        <button title="Everybody adds DARKMODE but I add LIGHTMODE" onclick="toggleTheme()">L</button>
+        <button title="Don't switch off the internet!!!" onclick="toggleTheme()">T</button>
+    </div>
   </div>
   <div class="content ap-console">
 

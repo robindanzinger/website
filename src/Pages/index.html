@@ -13,7 +13,7 @@
       <li><a href="./datenschutz">Datenschutz</a></li>
     </ul>
 
-    <ul>
+    <ul class="monitorsettings">
       <li>
     <input type="range" min="5" max="100" value="50" oninput="changeContrast(this.value)" class="range">
       </li><li>
@@ -21,10 +21,11 @@
       </li><li>
     <input type="range" min="5" max="100" value="50" oninput="changeSaturation(this.value)" class="range">
       </li>
-      <li>
-        <button onclick="toggleTheme()">L</button>
-      </li>
     </ul>
+    <div class="modesettings">
+        <button title="Everybody adds DARKMODE but I add LIGHTMODE" onclick="toggleTheme()">L</button>
+        <button title="Don't switch off the internet!!!" onclick="toggleTheme()">T</button>
+    </div>
 
   </div>
 

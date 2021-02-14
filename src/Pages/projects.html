@@ -14,16 +14,16 @@
     </ul>
     <ul class="monitorsettings">
       <li>
-    <input type="range" min="5" max="100" value="50" oninput="changeContrast(this.value)" class="range">
+    <input title="Contrast" type="range" min="5" max="100" value="50" oninput="changeContrast(this.value)" class="slider contrast">
       </li><li>
-    <input type="range" min="5" max="100" value="50" oninput="changeBrightness(this.value)" class="range">
+    <input title="Brightness" type="range" min="5" max="100" value="50" oninput="changeBrightness(this.value)" class="slider brightness">
       </li><li>
-    <input type="range" min="5" max="100" value="50" oninput="changeSaturation(this.value)" class="range">
+    <input title="Saturation" type="range" min="5" max="100" value="50" oninput="changeSaturation(this.value)" class="slider saturation">
       </li>
     </ul>
     <div class="modesettings">
-        <button title="Everybody adds DARKMODE but I add LIGHTMODE" onclick="toggleTheme()">L</button>
-        <button title="Don't switch off the internet!!!" onclick="toggleTheme()">T</button>
+        <button class="lightmode" title="Everybody adds DARKMODE but I add LIGHTMODE" onclick="toggleTheme()"></button>
+        <button class="power" title="Don't switch off the internet!!!" onclick="toggleTheme()"></button>
     </div>
   </div>
 
