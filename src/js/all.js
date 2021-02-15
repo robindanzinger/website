@@ -1,4 +1,5 @@
-const contentNode = document.getElementsByClassName("content")[0]
+const contentNode = document.getElementById("main")
+const turnoffAnimationNode = document.getElementById("turnoff")
 const inputNode = document.getElementsByTagName("input")[0];
 const promptNode = document.getElementById("prompt");
 
@@ -8,6 +9,19 @@ inputNode.addEventListener("keyup", function(event) {
       handleEnter()
     }
 });
+
+let turnoff = false
+function toggleTurnOff() {
+  turnoff = !turnoff
+  if (turnoff) {
+    contentNode.style.display = 'none'
+    turnoffAnimationNode.style.display = 'flex'
+  } else {
+    if (!contentNode.classList.contains('turnonanimation')) contentNode.classList.add('turnonanimation')
+    contentNode.style.display = 'block'
+    turnoffAnimationNode.style.display = 'none'
+  }
+}
 
 let theme = 'dark'
 function toggleTheme() {

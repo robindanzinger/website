@@ -23,16 +23,20 @@
     </ul>
     <div class="modesettings">
         <button class="lightmode" title="Everybody adds DARKMODE but I add LIGHTMODE" onclick="toggleTheme()"></button>
-        <button class="power" title="Don't switch off the internet!!!" onclick="toggleTheme()"></button>
+        <button class="power" title="Don't switch off the internet!!!" onclick="toggleTurnOff()"></button>
     </div>
   </div>
 
-  <div class="content ap-console">
-    <h1>Projekte</h1>
-    <div class="font-bold">Hier sehen Sie eine Auswahl von Projekten, bei denen ich mitgearbeitet habe. Sie können auf ein Projekt klicken um mehr darüber zu erfahren.</div><br>
-    <ul id="projects" class="projects">
-    </ul>
+  <div id="turnoff" class="content ap-console turnoffanimwrapper">
+    <div class="turnoffanimation">
+    </div>
   </div>
+  <div id="main" class="content ap-console">
+      <h1>Projekte</h1>
+      <div class="font-bold">Hier sehen Sie eine Auswahl von Projekten, bei denen ich mitgearbeitet habe. Sie können auf ein Projekt klicken um mehr darüber zu erfahren.</div><br>
+      <ul id="projects" class="projects">
+      </ul>
+    </div>
 </div>
   <script>
     const projects = [
