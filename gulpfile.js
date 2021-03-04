@@ -1,14 +1,13 @@
-const { series } = require('gulp');
-const gulp = require('gulp');
-const imagemin = require('gulp-imagemin');
-const autoprefixer = require('gulp-autoprefixer');
-const htmlmin = require('gulp-htmlmin');
-const csso = require('gulp-csso');
-const uglify = require('gulp-uglify-es').default;
-const concat = require('gulp-concat');
-const filter = require('gulp-filter');
-const del = require('del');
-const eslint = require('gulp-eslint');
+import { series } from 'gulp';
+import gulp from 'gulp';
+import imagemin from 'gulp-imagemin';
+import autoprefixer from 'gulp-autoprefixer';
+import htmlmin from 'gulp-htmlmin';
+import csso from 'gulp-csso';
+import uglify from 'gulp-uglify-es';
+import filter from 'gulp-filter';
+import del from 'del';
+import eslint from 'gulp-eslint';
 
 function clean() {
   return del(['dist/**', '!dist'], {force:true});

@@ -1,8 +1,10 @@
-const WSS = require('websocket').server
-const http = require('http')
-const fs = require('fs')
+import * as websocket from 'websocket'
+const WSS = websocket.server
+import http from 'http'
+import fs from 'fs'
+import {watch} from './lib/watch.js'
 
-function init() {
+export function reloadserver() {
   let connections = []
   const server = http.createServer()
   server.listen(3003)
@@ -20,37 +22,12 @@ function init() {
     }, 500)
   })
 
-  let waitForUpdate = false
 
-  function watch (pages) {
-    pages.forEach(p => {
+  watch(['./src/blog', './src/Pages', './src', './src/css', './src/js'], updateClients, {filetypes: ['html', 'css', 'js'], sleep: 100} );
 
-      console.log('watch dir:', p)
-      fs.watch(p, (evt, filename) => {
-        if (waitForUpdate) {
-          return
-        }
-        if (watchFileType(filename)) {
-          console.log('run update for file:', filename)
-          waitForUpdate = true
-          setTimeout(updateClients, 100);
-        }
-      })
-    })
-  }
-
-  function watchFileType(filename) {
-    return /.*\.(?:html|css|js)$/.test(filename)
-  }
-
-  function updateClients () {
+  async function updateClients () {
     console.log(`update ${connections.length} clients`)
     connections.forEach(c => c.send('reload'))
-    waitForUpdate = false
   }
 
-  watch(['./src/Pages', './src', './src/css', './src/js']);
 }
-
-
-module.exports = {init}

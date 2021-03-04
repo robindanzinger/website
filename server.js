@@ -1,8 +1,12 @@
-const express = require('express')
+import express from 'express'
 const app = express()
-const reloadserver = require('./reloadserver.js')
+import {reloadserver} from './reloadserver.js'
+import {watch} from './lib/watch.js'
 const port = 3000
-const fs = require('fs')
+import fs from 'fs'
+import {exec} from 'child_process'
+import util from 'util'
+const asyncExec = util.promisify(exec);
 
 app.use(express.static('src'))
 app.use(express.static('dist', {extensions:['html']}))
@@ -11,11 +15,15 @@ app.get("/page/", function (req, res) {
   const html = fs.readFileSync(`./src/Pages/index.html`, 'utf-8')
   res.send(renderPage(html))
 })
-app.get("/page/:subfolder/:filename", function (req, res) {
+app.get("/blog/:filename", function (req, res) {
   const file = req.params.filename.indexOf(".html") > 0 ? req.params.filename : req.params.filename + ".html" 
-  const folder = req.params.subfolder
-  const html = fs.readFileSync(`./src/Pages/${folder}/${file}`, 'utf-8')
-  res.send(renderPage(html))
+  const html = fs.readFileSync(`./src/blog/${file}`, 'utf-8')
+  const fullhtml = html.substring(0, html.indexOf('</body>')) + `
+      <script src="/reloadpage.js"></script>
+      </body>
+      </html>
+   `
+  res.send(fullhtml)
 })
 app.get("/page/:filename", function (req, res) {
   const file = req.params.filename.indexOf(".html") > 0 ? req.params.filename : req.params.filename + ".html" 
@@ -31,5 +39,19 @@ function renderPage(html) {
           <script src="/reloadpage.js"></script>
           ${posthtml}`
 }
-reloadserver.init()
+reloadserver()
+
+// generate asciidoc
+async function createAsciiDoc(filename) {
+  console.log('file', filename)
+  const cmd = `asciidoctor ./src/blog/${filename}`
+  try {
+    await asyncExec(cmd);
+  } catch (e) {
+    console.log(e)
+  }
+}
+console.log('watch')
+watch(['./src/blog'], createAsciiDoc, {filetypes: ['adoc'], sleep: 100})
+
 app.listen(port, () => console.log(`Listening to port ${port}`))
