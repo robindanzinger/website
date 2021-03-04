@@ -1,19 +1,21 @@
-import { series } from 'gulp';
 import gulp from 'gulp';
+const  series = gulp.series;
 import imagemin from 'gulp-imagemin';
 import autoprefixer from 'gulp-autoprefixer';
 import htmlmin from 'gulp-htmlmin';
 import csso from 'gulp-csso';
-import uglify from 'gulp-uglify-es';
+import gulpuglify from 'gulp-uglify-es';
+const uglify = gulpuglify.default
 import filter from 'gulp-filter';
 import del from 'del';
 import eslint from 'gulp-eslint';
 
-function clean() {
+export function clean() {
   return del(['dist/**', '!dist'], {force:true});
 }
 
 function buildjs() {
+  console.log('buildjs', uglify)
   return gulp.src('src/js/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'));
@@ -43,13 +45,11 @@ function buildImg() {
     .pipe(imagemin())
     .pipe(gulp.dest('dist/img'))
 }
-function lint() {
+export function lint() {
   return gulp.src(['src/js/**','!node_modules/**'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 }
 
-exports.default = series(clean, buildjs, buildcss, buildhtml, buildhtml2, buildImg);
-exports.clean = clean;
-exports.lint = lint;
+export default series(clean, buildjs, buildcss, buildhtml, buildhtml2, buildImg);
