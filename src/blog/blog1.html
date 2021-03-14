@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Test Commonmark</title>
+<title>ui patterns for the web</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,21 +438,75 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Test Commonmark</h1>
+<h1>ui patterns for the web</h1>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Some more text:</p>
+<p>what problems does the ui solve?</p>
+</div>
+<div class="paragraph">
+<p>The simplest thing a ui solves is to show some information to a reader. If the information doesn&#8217;t change over time and if it is independent of the reader, a static html site is the best thing you can use.
+Most websites in the internet are static websites, like blogposts, ads, documents, presentation sites.</p>
+</div>
+<div class="paragraph">
+<p>But today we do not only want to show information, but also get information from the user.</p>
+</div>
+<div class="paragraph">
+<p>And then web apps also show, process and change the ui depending on the user. The user creates new information.
+As the expectations for a modern user interface rise, more sophisticated solutions are needed.</p>
+</div>
+<div class="paragraph">
+<p>Modern user interfaces
+bla blub</p>
+</div>
+<div class="paragraph">
+<p>why component frameworks?</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_subdoc">Subdoc</h2>
+<h2 id="_components">components</h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
+<div class="paragraph">
+<p>reuse solutions</p>
+</div>
+<div class="paragraph">
+<p>divide and conquer</p>
+</div>
+<div class="paragraph">
+<p>solid</p>
+</div>
+<div class="paragraph">
+<p>testing???</p>
+</div>
+<div class="paragraph">
+<p>why?</p>
+</div>
+<div class="sect2">
+<h3 id="_state_management">state management</h3>
+<div class="paragraph">
+<p>decide as latest as possible</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_stateless_components">stateless components</h3>
+<div class="paragraph">
+<p>why?
+=== renderless components
+why?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_collaboration">collaboration</h2>
+<div class="sectionbody">
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
 <li>
 <p>bazz</p>
 </li>
@@ -461,25 +515,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p>bar</p>
-<div class="ulist">
-<ul>
-<li>
-<p>sub1</p>
-</li>
-<li>
-<p>sub2</p>
-</li>
-<li>
-<p>sub3</p>
 </li>
 </ul>
 </div>
-</li>
-</ol>
+</div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-(javascript)" data-lang="(javascript)">function foo(b) {
+<pre class="highlightjs highlight"><code data-lang="javascript" class="language-javascript hljs">function foo(b) {
   const a = 10
   if (a + b &gt; 10) {
     return 'some cool string'
@@ -496,8 +539,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-04 11:28:43 +0100
+Last updated 2021-03-05 12:07:07 +0100
 </div>
 </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

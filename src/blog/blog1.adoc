@@ -1,18 +1,52 @@
-= Test Commonmark
+:source-highlighter: highlight.js
+= ui patterns for the web
 
-Some more text:
+what problems does the ui solve?
 
-== Subdoc
+The simplest thing a ui solves is to show some information to a reader. If the information doesn't change over time and if it is independent of the reader, a static html site is the best thing you can use.
+Most websites in the internet are static websites, like blogposts, ads, documents, presentation sites.
 
-. bazz
-. foo
-. bar
+But today we do not only want to show information, but also get information from the user. 
 
-  - sub1
-  - sub2
-  - sub3
+And then web apps also show, process and change the ui depending on the user. The user creates new information.  
+As the expectations for a modern user interface rise, more sophisticated solutions are needed.
 
-```(javascript)
+Modern user interfaces 
+bla blub
+
+why component frameworks?
+
+== components
+reuse solutions
+
+divide and conquer
+
+solid
+
+testing???
+
+why?
+
+=== state management
+decide as latest as possible
+
+=== stateless components
+why?
+=== renderless components
+why?
+
+== collaboration 
+
+
+
+--
+- bazz
+- foo
+- bar
+--
+
+[source,javascript]
+----
 function foo(b) {
   const a = 10
   if (a + b > 10) {
@@ -20,6 +54,6 @@ function foo(b) {
   }
   throw new Error('UPPS')
 }
-```
+----
 
 ist das nicht cool
