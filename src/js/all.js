@@ -34,14 +34,14 @@ function changeTheme() {
     rootNode.style.setProperty('--primary-color', 'steelblue');
     rootNode.style.setProperty('--secondary-color', 'green');
     rootNode.style.setProperty('--primary-font-color', 'black');
-    rootNode.style.setProperty('--secondary-font-color', 'brown');
+    rootNode.style.setProperty('--secondary-font-color', 'steelblue');
     rootNode.style.setProperty('--content-bg-color', 'ghostwhite');
     rootNode.style.setProperty('--body-bg-color', 'darkgray');
   } else {
     rootNode.style.setProperty('--primary-color', '#FFBF00');
     rootNode.style.setProperty('--secondary-color', 'green');
     rootNode.style.setProperty('--primary-font-color', 'cornsilk');
-    rootNode.style.setProperty('--secondary-font-color', 'brown');
+    rootNode.style.setProperty('--secondary-font-color', '#FFBF00');
     rootNode.style.setProperty('--content-bg-color', 'black');
     rootNode.style.setProperty('--body-bg-color', 'cornsilk');
   }
@@ -141,7 +141,7 @@ function handleEnter() {
 }
 
 function getPrompt() {
-  return style("guest@robindanzinger.de:" + pwd + "$ ", "brown bold") 
+  return style("guest@robindanzinger.de:" + pwd + "$ ", "secondary-font-color bold") 
 }
 
 function clearContent() {

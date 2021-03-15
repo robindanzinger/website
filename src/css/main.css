@@ -1,7 +1,7 @@
 /*
  * green: 
    color: #8fb061;
- * brown: 
+ * secondary-font-color: 
    color: #8d3d0f;
  * gray: lightgray
  *
@@ -11,7 +11,7 @@
   --primary-color: #FFBF00;
   --secondary-color: green;
   --primary-font-color: cornsilk;
-  --secondary-font-color: brown;
+  --secondary-font-color: #FFBF00;
   --content-bg-color: black;
   --body-bg-color: cornsilk;
 }
@@ -22,7 +22,7 @@
   --primary-color: blue;
   --secondary-color: green;
   --primary-font-color: black;
-  --secondary-font-color: brown;
+  --secondary-font-color: blue;
   --content-bg-color: white;
   --body-bg-color: cornsilk;
 }
@@ -131,7 +131,7 @@ a:hover {
 .font-bold {
   font-weight: bold;
 }
-.brown {
+.secondary-font-color {
   color: var(--secondary-font-color);
 }
 .nowrap {
