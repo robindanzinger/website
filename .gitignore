@@ -7,3 +7,4 @@
 /dist
 /.vim
 deploy.sh
+tmuxdev.sh
